@@ -40,6 +40,36 @@ PRODUCT_COPY_FILES += \
 	device/samsung/gogh-common/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini \
 	device/samsung/gogh-common/WCNSS_qcom_wlan_nv.bin:system/etc/wifi/WCNSS_qcom_wlan_nv.bin
 
+#scripts
+PRODUCT_COPY_FILES += \
+	device/samsung/gogh-common/scripts/init.ath3k.bt.sh:system/etc/init.ath3k.bt.sh \
+	device/samsung/gogh-common/scripts/init.qcom.bt.sh:system/etc/init.qcom.bt.sh \
+	device/samsung/gogh-common/scripts/init.qcom.coex.sh:system/etc/init.qcom.coex.sh \
+	device/samsung/gogh-common/scripts/init.qcom.efs.sync.sh:system/etc/init.qcom.efs.sync.sh \
+	device/samsung/gogh-common/scripts/init.qcom.fm.sh:system/etc/init.qcom.fm.sh \
+	device/samsung/gogh-common/scripts/init.qcom.mdm_links.sh:system/etc/init.qcom.mdm_links.sh \
+	device/samsung/gogh-common/scripts/init.qcom.modem_links.sh:system/etc/init.qcom.modem_links.sh \
+	device/samsung/gogh-common/scripts/init.qcom.post_boot.sh:system/etc/init.qcom.post_boot.sh \
+	device/samsung/gogh-common/scripts/init.qcom.post_fs.sh:system/etc/init.qcom.post_fs.sh \
+	device/samsung/gogh-common/scripts/init.qcom.sdio.sh:system/etc/init.qcom.sdio.sh \
+	device/samsung/gogh-common/scripts/init.qcom.thermald_conf.sh:system/etc/init.qcom.thermald_conf.sh \
+	device/samsung/gogh-common/scripts/init.qcom.wifi.sh:system/etc/init.qcom.wifi.sh
+
+#init
+PRODUCT_COPY_FILES += \
+	device/samsung/gogh-common/root/fstab.qcom:root/fstab.qcom \
+	device/samsung/gogh-common/root/init:root/init \
+	device/samsung/gogh-common/root/init.bt.rc:root/init.bt.rc \
+	device/samsung/gogh-common/root/init.qcom.class_core.sh:root/init.qcom.class_core.sh \
+	device/samsung/gogh-common/root/init.qcom.class_main.sh:root/init.qcom.class_main.sh \
+	device/samsung/gogh-common/root/init.qcom.rc:root/init.qcom.rc \
+	device/samsung/gogh-common/root/init.qcom.sh:root/init.qcom.sh \
+	device/samsung/gogh-common/root/init.qcom.usb.rc:root/init.qcom.usb.rc \
+	device/samsung/gogh-common/root/init.qcom.usb.sh:root/init.qcom.usb.sh \
+	device/samsung/gogh-common/root/init.rc:root/init.rc \
+	device/samsung/gogh-common/root/init.target.rc:root/init.target.rc \
+	device/samsung/gogh-common/root/initlogo.rle:root/initlogo.rle \
+	device/samsung/gogh-common/root/ueventd.qcom.rc:root/ueventd.qcom.rc
 
 # Ramdisk
 PRODUCT_PACKAGES += \
