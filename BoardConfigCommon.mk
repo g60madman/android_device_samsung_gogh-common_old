@@ -68,6 +68,12 @@ TARGET_NO_INITLOGO := true
 # Use Audience A2220 chip
 BOARD_HAVE_AUDIENCE_A2220 := true
 
+# Graphics
+USE_OPENGL_RENDERER := true
+TARGET_USES_C2D_COMPOSITION := true
+TARGET_USES_ION := true
+BOARD_EGL_CFG := device/samsung/gogh-common/egl.cfg
+
 # Use USB Dock Audio
-BOARD_HAVE_DOCK_USBAUDIO := true
+#BOARD_HAVE_DOCK_USBAUDIO := true
 

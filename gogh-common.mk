@@ -29,16 +29,14 @@ DEVICE_PACKAGE_OVERLAYS += device/samsung/gogh-common/overlay
 PRODUCT_AAPT_CONFIG := normal hdpi xhdpi
 PRODUCT_AAPT_PREF_CONFIG := xhdpi
 
+# Boot animation
+TARGET_SCREEN_WIDTH := 480
+TARGET_SCREEN_HEIGHT := 800
+
 # Audio configuration
 PRODUCT_COPY_FILES += \
 	device/samsung/gogh-common/audio/snd_soc_msm_2x:system/etc/snd_soc_msm/snd_soc_msm_2x \
 	device/samsung/gogh-common/audio/audio_policy.conf:system/etc/audio_policy.conf
-
-# Wifi configuration
-PRODUCT_COPY_FILES += \
-	device/samsung/gogh-common/WCNSS_cfg.dat:system/vendor/firmware/wlan/prima/WCNSS_cfg.dat \
-	device/samsung/gogh-common/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini \
-	device/samsung/gogh-common/WCNSS_qcom_wlan_nv.bin:system/etc/wifi/WCNSS_qcom_wlan_nv.bin
 
 #scripts
 PRODUCT_COPY_FILES += \
@@ -131,7 +129,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     lpa.decode=true \
     rild.libpath=/system/lib/libril-qc-qmi-1.so \
     ril.subscription.types=NV,RUIM \
-    ro.telephony.ril.v3=skipnullaid
+    ro.telephony.ril.v3=skipnullaid \
+    wifi.interface=wlan0 \
+    ro.product.wireless=WCN3660 
 
 # common msm8960
 $(call inherit-product, device/samsung/msm8960-common/msm8960.mk)
