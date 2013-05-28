@@ -16,6 +16,9 @@
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
+UTC_DATE := $(shell date +%s)
+DATE := $(shell date +%Y%m%d)
+
 ## The gps config appropriate for this device
 PRODUCT_COPY_FILES += device/common/gps/gps.conf_US_SUPL:system/etc/gps.conf
 
@@ -69,11 +72,6 @@ PRODUCT_PACKAGES += \
     hwcomposer.msm8960 \
     power.msm8960
 
-# GalaxyS3Settings
-#PRODUCT_PACKAGES += \
-#     GalaxyS3Settings \
-#     SamsungServiceMode
-
 # Victory Kernel Settings
 PRODUCT_PACKAGES += \
     libexifa \
@@ -83,8 +81,8 @@ PRODUCT_PACKAGES += \
     qcom_dut
 
 # GPS
-#PRODUCT_PACKAGES += \
-#	gps.msm8960
+PRODUCT_PACKAGES += \
+    gps.msm8960
 
 # NFC Support
 PRODUCT_PACKAGES += \
@@ -157,13 +155,12 @@ PRODUCT_COPY_FILES += \
 # We have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
 
-# Common overlay
-DEVICE_PACKAGE_OVERLAYS += device/samsung/gogh-common/overlay
-
 # common msm8960
 $(call inherit-product, device/samsung/qcom-common/qcom-common.mk)
 
 # Device uses high-density artwork where available
+PRODUCT_LOCALES := en_US
+PRODUCT_LOCALES += hdpi
 PRODUCT_AAPT_CONFIG := normal hdpi xhdpi
 PRODUCT_AAPT_PREF_CONFIG := xhdpi
 
@@ -228,6 +225,7 @@ PRODUCT_COPY_FILES += \
 	device/samsung/gogh-common/modules/scsi_wait_scan.ko:system/lib/modules/scsi_wait_scan.ko \
 	device/samsung/gogh-common/modules/spidev.ko:system/lib/modules/spidev.ko \
 	device/samsung/gogh-common/modules/vpnclient.ko:system/lib/modules/vpnclient.ko \
+
 # Ramdisk
 PRODUCT_PACKAGES += \
     fstab.qcom \
@@ -265,32 +263,23 @@ PRODUCT_PACKAGES += qrngd
 
 #common build.props
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.ril.hsxpa=1 \
-    ro.ril.gprsclass=10 \
-    persist.radio.add_power_save=1 \
-    persist.radio.snapshot_disabled=1 \
     com.qc.hardware=true \
-    persist.radio.apm_sim_not_pwdn=1 \
     persist.gps.qmienabled=true \
-    ro.telephony.call_ring.multiple=0 \
-    ro.sf.lcd_density=320 \
+    ro.sf.lcd_density=240 \
     ro.ril.transmitpower=true \
     ro.opengles.version=131072 \
     persist.audio.fluence.mode=endfire \
     persist.audio.vr.enable=false \
     persist.audio.handset.mic=digital \
-    persist.audio.speaker.location=high \
-    ro.qc.sdk.audio.fluencetype=fluence \
+    ro.qc.sdk.camera.facialproc=false \
+    ro.qc.sdk.sensors.gestures=false \
     persist.timed.enable=true \
     ro.emmc.sdcard.partition=17 \
-    ro.use_data_netmgrd=true \
-    persist.data_netmgrd_nint=16 \
     lpa.decode=true \
     rild.libpath=/system/lib/libril-qc-qmi-1.so \
     ril.subscription.types=NV,RUIM \
-    ro.telephony.ril.v3=skipnullaid \
-    wifi.interface=wlan0 \
-    ro.product.wireless=WCN3660 
+    wifi.interface=wlan0
 
+PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 
