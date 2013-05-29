@@ -38,19 +38,28 @@ on early-boot
     setrlimit 8 67108864 67108864
 
 on early-init
-    mkdir /storage 0050 system sdcard_r
+    export EXTERNAL_STORAGE /storage/sdcard0
+    mkdir /storage 0550 system sdcard_r
     mkdir /storage/sdcard0 0000 system system
-    mkdir /storage/sdcard1 0000 system system
-
     symlink /storage/sdcard0 /sdcard
     symlink /storage/sdcard0 /mnt/sdcard
-    symlink /storage/sdcard1 /external_sd
-    symlink /storage/sdcard1 /mnt/external_sd
+# map "real" external storages paths also in same way. backwards compatibility.
+    symlink /storage/extSdCard /mnt/extSdCard
+    symlink /storage/UsbDriveA /mnt/UsbDriveA
+    symlink /storage/UsbDriveB /mnt/UsbDriveB
+    symlink /storage/UsbDriveC /mnt/UsbDriveC
+    symlink /storage/UsbDriveD /mnt/UsbDriveD
+    symlink /storage/UsbDriveE /mnt/UsbDriveE
+    symlink /storage/UsbDriveF /mnt/UsbDriveF
 
-    mkdir /mnt/usbdisk 0755 system system
-
-    export EXTERNAL_STORAGE /storage/sdcard0
-    export SECONDARY_STORAGE /storage/sdcard1
+    export SECONDARY_STORAGE /storage/extSdCard:/storage/UsbDriveA:/storage/UsbDriveB:/storage/UsbDriveC:/storage/UsbDriveD:/storage/UsbDriveE:/storage/UsbDriveF
+    mkdir /storage/extSdCard 0000 system system
+    mkdir /storage/UsbDriveA 0000 system system
+    mkdir /storage/UsbDriveB 0000 system system
+    mkdir /storage/UsbDriveC 0000 system system
+    mkdir /storage/UsbDriveD 0000 system system
+    mkdir /storage/UsbDriveE 0000 system system
+    mkdir /storage/UsbDriveF 0000 system system
 
 on boot
     exec system/bin/btnvtool -O

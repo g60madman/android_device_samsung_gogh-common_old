@@ -34,5 +34,3 @@
 /sdcard       datamedia  /dev/null
 /external_sd  vfat       /dev/block/mmcblk1p1    /dev/block/mmcblk1
 /modem        ext4       /dev/block/platform/msm_sdcc.1/by-name/modem
-/efs          ext4	 /dev/block/platform/msm_sdcc.1/by-name/efs
-/carrier      ext4	 /dev/block/platform/msm_sdcc.1/by-name/carrier
